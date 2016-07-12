@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP CP2112
+D USB to I2C
+K Silicon Labs USB I2C
+$ENDCMP
+#
+#End Doc Library
