@@ -33,4 +33,3 @@ LibName1=power
 LibName2=device
 LibName3=conn
 LibName4=i2c
-LibName5=atmel
