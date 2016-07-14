@@ -1,4 +1,4 @@
-update=2016 July 13, Wednesday 02:43:18
+update=2016 July 15, Friday 00:36:43
 version=1
 last_client=kicad
 [pcbnew]
@@ -33,3 +33,4 @@ LibName1=power
 LibName2=device
 LibName3=conn
 LibName4=i2c
+LibName5=atmel

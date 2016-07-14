@@ -5,4 +5,9 @@ D USB to I2C
 K Silicon Labs USB I2C
 $ENDCMP
 #
+$CMP SP0503BAHTG
+D TVS Diode Array x 3
+K tvs diode array
+$ENDCMP
+#
 #End Doc Library
