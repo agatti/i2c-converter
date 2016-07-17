@@ -3,6 +3,7 @@ LIBS:power
 LIBS:device
 LIBS:conn
 LIBS:i2c
+LIBS:i2c-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -88,23 +89,23 @@ $EndComp
 $Comp
 L C_Small C4
 U 1 1 577FF55C
-P 5050 3400
-F 0 "C4" H 4850 3450 50  0000 L CNN
-F 1 "0.1µF" H 4750 3350 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 5050 3400 50  0001 C CNN
-F 3 "" H 5050 3400 50  0000 C CNN
-	1    5050 3400
+P 4750 3500
+F 0 "C4" H 4850 3550 50  0000 L CNN
+F 1 "0.1µF" H 4850 3450 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 4750 3500 50  0001 C CNN
+F 3 "" H 4750 3500 50  0000 C CNN
+	1    4750 3500
 	1    0    0    -1  
 $EndComp
 $Comp
 L C_Small C3
 U 1 1 577FF5D8
-P 4700 3700
-F 0 "C3" H 4792 3746 50  0000 L CNN
-F 1 "1µF" H 4792 3655 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 4700 3700 50  0001 C CNN
-F 3 "" H 4700 3700 50  0000 C CNN
-	1    4700 3700
+P 4350 3500
+F 0 "C3" H 4442 3546 50  0000 L CNN
+F 1 "1µF" H 4442 3455 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 4350 3500 50  0001 C CNN
+F 3 "" H 4350 3500 50  0000 C CNN
+	1    4350 3500
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -172,7 +173,7 @@ Text Label 4100 4300 0    60   ~ 0
 D-
 Text Label 4100 4400 0    60   ~ 0
 VCC
-Text Label 4500 3250 0    60   ~ 0
+Text Label 4400 3250 0    60   ~ 0
 VDD
 Text Label 7150 3300 0    60   ~ 0
 VPP
@@ -234,12 +235,7 @@ Wire Wire Line
 Wire Wire Line
 	3850 4200 5600 4200
 Wire Wire Line
-	5150 4100 5600 4100
-Wire Wire Line
-	5150 3400 5150 5750
-Wire Wire Line
-	5150 3400 5600 3400
-Connection ~ 5150 4100
+	5100 4100 5600 4100
 Wire Wire Line
 	5450 3400 5450 3500
 Connection ~ 5450 3400
@@ -253,16 +249,14 @@ Wire Wire Line
 Connection ~ 5450 3250
 Connection ~ 5450 2850
 Wire Wire Line
-	4700 3600 4700 3250
+	4350 3400 4350 3250
 Wire Wire Line
-	5050 3250 5050 3300
-Connection ~ 5050 3250
+	4750 3250 4750 3400
+Connection ~ 4750 3250
 Wire Wire Line
-	5050 3500 5050 3850
-Connection ~ 5050 3850
-Connection ~ 4700 3850
-Wire Wire Line
-	4700 3800 4700 3850
+	4750 3600 4750 3850
+Connection ~ 4750 3850
+Connection ~ 4350 3850
 Wire Wire Line
 	3450 3650 3450 3900
 Wire Wire Line
@@ -270,7 +264,7 @@ Wire Wire Line
 Wire Wire Line
 	3850 3850 3450 3850
 Connection ~ 3450 3850
-Connection ~ 4700 3250
+Connection ~ 4350 3250
 Wire Wire Line
 	6800 3300 8250 3300
 Wire Wire Line
@@ -288,8 +282,6 @@ Wire Wire Line
 	7750 2400 7750 2700
 Wire Wire Line
 	4100 3850 4100 3650
-Wire Wire Line
-	3950 3250 5600 3250
 Wire Wire Line
 	3850 4400 5150 4400
 Wire Wire Line
@@ -353,13 +345,8 @@ Wire Wire Line
 	7900 5700 7500 5700
 Wire Wire Line
 	7500 5700 7500 5550
-Connection ~ 5150 4400
 Wire Wire Line
-	5150 5750 6900 5750
-Wire Wire Line
-	6900 5750 6900 5550
-Wire Wire Line
-	3950 5900 8800 5900
+	6900 5550 6900 5900
 Wire Wire Line
 	7300 5800 8250 5800
 Wire Wire Line
@@ -369,8 +356,6 @@ Wire Wire Line
 Wire Wire Line
 	6700 6350 7400 6350
 Connection ~ 7000 6350
-Wire Wire Line
-	3950 3250 3950 5900
 Wire Wire Line
 	7200 5900 7200 5550
 Wire Wire Line
@@ -405,10 +390,7 @@ F 3 "" H 8500 3900 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	8800 5900 8800 3750
-Wire Wire Line
 	8800 3750 8650 3750
-Connection ~ 7200 5900
 Wire Wire Line
 	8650 3900 8800 3900
 Connection ~ 8800 3900
@@ -418,4 +400,91 @@ Connection ~ 7800 3900
 Wire Wire Line
 	8350 3750 7900 3750
 Connection ~ 7900 3750
+$Comp
+L VDD #PWR07
+U 1 1 578BDF8E
+P 4200 3250
+F 0 "#PWR07" H 4200 3100 50  0001 C CNN
+F 1 "VDD" H 4200 3400 50  0000 C CNN
+F 2 "" H 4200 3250 50  0000 C CNN
+F 3 "" H 4200 3250 50  0000 C CNN
+	1    4200 3250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	4200 3250 5600 3250
+$Comp
+L VDD #PWR08
+U 1 1 578BE074
+P 8800 4250
+F 0 "#PWR08" H 8800 4100 50  0001 C CNN
+F 1 "VDD" H 8800 4400 50  0000 C CNN
+F 2 "" H 8800 4250 50  0000 C CNN
+F 3 "" H 8800 4250 50  0000 C CNN
+	1    8800 4250
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8800 3750 8800 4250
+$Comp
+L VDD #PWR09
+U 1 1 578BE122
+P 7200 5900
+F 0 "#PWR09" H 7200 5750 50  0001 C CNN
+F 1 "VDD" H 7200 6050 50  0000 C CNN
+F 2 "" H 7200 5900 50  0000 C CNN
+F 3 "" H 7200 5900 50  0000 C CNN
+	1    7200 5900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4350 3600 4350 3850
+$Comp
+L VCC #PWR?
+U 1 1 578BE58D
+P 5150 4650
+F 0 "#PWR?" H 5150 4500 50  0001 C CNN
+F 1 "VCC" H 5150 4800 50  0000 C CNN
+F 2 "" H 5150 4650 50  0000 C CNN
+F 3 "" H 5150 4650 50  0000 C CNN
+	1    5150 4650
+	1    0    0    1   
+$EndComp
+$Comp
+L VCC #PWR?
+U 1 1 578BE5F0
+P 6900 5900
+F 0 "#PWR?" H 6900 5750 50  0001 C CNN
+F 1 "VCC" H 6900 6050 50  0000 C CNN
+F 2 "" H 6900 5900 50  0000 C CNN
+F 3 "" H 6900 5900 50  0000 C CNN
+	1    6900 5900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5150 4400 5150 4650
+$Comp
+L VCC #PWR?
+U 1 1 578BE821
+P 5100 4100
+F 0 "#PWR?" H 5100 3950 50  0001 C CNN
+F 1 "VCC" H 5100 4250 50  0000 C CNN
+F 2 "" H 5100 4100 50  0000 C CNN
+F 3 "" H 5100 4100 50  0000 C CNN
+	1    5100 4100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L VCC #PWR?
+U 1 1 578BE867
+P 5300 3400
+F 0 "#PWR?" H 5300 3250 50  0001 C CNN
+F 1 "VCC" H 5300 3550 50  0000 C CNN
+F 2 "" H 5300 3400 50  0000 C CNN
+F 3 "" H 5300 3400 50  0000 C CNN
+	1    5300 3400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5300 3400 5600 3400
 $EndSCHEMATC
