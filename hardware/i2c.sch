@@ -3,14 +3,15 @@ LIBS:power
 LIBS:device
 LIBS:conn
 LIBS:i2c
+LIBS:i2c-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "I²C‹›USB Converter Board"
-Date "2016-07-13"
-Rev "v0.1"
+Date "2016-07-16"
+Rev "v0.3"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -31,12 +32,12 @@ $EndComp
 $Comp
 L C_Small C1
 U 1 1 577FF027
-P 8250 2300
-F 0 "C1" V 8021 2300 50  0000 C CNN
-F 1 "4.7µF" V 8112 2300 50  0000 C CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 8250 2300 50  0001 C CNN
-F 3 "" H 8250 2300 50  0000 C CNN
-	1    8250 2300
+P 7400 6100
+F 0 "C1" V 7171 6100 50  0000 C CNN
+F 1 "4.7µF" V 7262 6100 50  0000 C CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 7400 6100 50  0001 C CNN
+F 3 "" H 7400 6100 50  0000 C CNN
+	1    7400 6100
 	-1   0    0    1   
 $EndComp
 NoConn ~ 6800 3050
@@ -121,24 +122,13 @@ $EndComp
 $Comp
 L GND #PWR04
 U 1 1 5786A94E
-P 7500 4800
-F 0 "#PWR04" H 7500 4550 50  0001 C CNN
-F 1 "GND" H 7500 4650 50  0000 C CNN
-F 2 "" H 7500 4800 50  0000 C CNN
-F 3 "" H 7500 4800 50  0000 C CNN
-	1    7500 4800
-	1    0    0    -1  
-$EndComp
-$Comp
-L CONN_01X02 J1
-U 1 1 5786AC8C
-P 8450 2900
-F 0 "J1" H 8450 3050 50  0000 C CNN
-F 1 "CONN_01X02" V 8550 2900 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 8450 2900 50  0001 C CNN
-F 3 "" H 8450 2900 50  0000 C CNN
-	1    8450 2900
-	1    0    0    -1  
+P 6700 6350
+F 0 "#PWR04" H 6700 6100 50  0001 C CNN
+F 1 "GND" H 6700 6200 50  0000 C CNN
+F 2 "" H 6700 6350 50  0000 C CNN
+F 3 "" H 6700 6350 50  0000 C CNN
+	1    6700 6350
+	0    1    1    0   
 $EndComp
 $Comp
 L R R2
@@ -152,19 +142,6 @@ F 3 "" H 7750 2850 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L GND #PWR05
-U 1 1 5786AF8E
-P 8250 2000
-F 0 "#PWR05" H 8250 1750 50  0001 C CNN
-F 1 "GND" H 8250 1850 50  0000 C CNN
-F 2 "" H 8250 2000 50  0000 C CNN
-F 3 "" H 8250 2000 50  0000 C CNN
-	1    8250 2000
-	-1   0    0    1   
-$EndComp
-Text Notes 9000 2700 2    60   ~ 0
-PROGRAMMING\nHEADER
-$Comp
 L R R1
 U 1 1 5786B1D6
 P 7100 2850
@@ -176,63 +153,80 @@ F 3 "" H 7100 2850 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L CONN_01X03 P2
-U 1 1 5787B817
-P 8600 3550
-F 0 "P2" H 8600 3750 50  0000 C CNN
-F 1 "CONN_01X03" V 8700 3550 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 8600 3550 50  0001 C CNN
-F 3 "" H 8600 3550 50  0000 C CNN
-	1    8600 3550
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR06
-U 1 1 5787B93C
-P 8300 3850
-F 0 "#PWR06" H 8300 3600 50  0001 C CNN
-F 1 "GND" H 8300 3700 50  0000 C CNN
-F 2 "" H 8300 3850 50  0000 C CNN
-F 3 "" H 8300 3850 50  0000 C CNN
-	1    8300 3850
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR07
+L GND #PWR05
 U 1 1 5787C02A
 P 7750 2400
-F 0 "#PWR07" H 7750 2150 50  0001 C CNN
+F 0 "#PWR05" H 7750 2150 50  0001 C CNN
 F 1 "GND" H 7750 2250 50  0000 C CNN
 F 2 "" H 7750 2400 50  0000 C CNN
 F 3 "" H 7750 2400 50  0000 C CNN
 	1    7750 2400
 	-1   0    0    1   
 $EndComp
-Text Notes 8450 3900 0    60   ~ 0
-I²C HEADER
+Text Label 7900 5050 1    60   ~ 0
+SDA
+Text Label 7800 5050 1    60   ~ 0
+SCL
+Text Label 4100 4200 0    60   ~ 0
+D+
+Text Label 4100 4300 0    60   ~ 0
+D-
+Text Label 4100 4400 0    60   ~ 0
+VCC
+Text Label 4500 3250 0    60   ~ 0
+VDD
+Text Label 7150 3300 0    60   ~ 0
+VPP
+Text Label 7600 4500 3    60   ~ 0
+GPIO.0
+Text Label 7500 4800 1    60   ~ 0
+GPIO.1
+Text Label 7400 4800 1    60   ~ 0
+GPIO.2
+Text Label 7300 4800 1    60   ~ 0
+GPIO.3
+Text Label 7200 4800 1    60   ~ 0
+GPIO.4
+Text Label 7100 4800 1    60   ~ 0
+GPIO.5
+Text Label 7000 4800 1    60   ~ 0
+GPIO.6
+Text Label 6900 4800 1    60   ~ 0
+GPIO.7
+Text Label 5200 2850 0    60   ~ 0
+VIO
 $Comp
-L CONN_01X09 P5
-U 1 1 5787C920
-P 7850 4100
-F 0 "P5" H 7850 4600 50  0000 C CNN
-F 1 "CONN_01X09" V 7950 4100 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x09" H 7850 4100 50  0001 C CNN
-F 3 "" H 7850 4100 50  0000 C CNN
-	1    7850 4100
+L SP0503BAHTG CR1
+U 1 1 5787ED15
+P 4650 4850
+F 0 "CR1" H 4400 4650 60  0000 C CNN
+F 1 "SP0503BAHTG" H 4650 5150 60  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-143_Handsoldering" H 5700 4900 60  0001 C CNN
+F 3 "" H 5700 4900 60  0001 C CNN
+	1    4650 4850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR06
+U 1 1 5787EED4
+P 4650 5400
+F 0 "#PWR06" H 4650 5150 50  0001 C CNN
+F 1 "GND" H 4650 5250 50  0000 C CNN
+F 2 "" H 4650 5400 50  0000 C CNN
+F 3 "" H 4650 5400 50  0000 C CNN
+	1    4650 5400
 	1    0    0    -1  
 $EndComp
-Text Notes 6800 4550 0    60   ~ 0
-GPIO HEADER
 $Comp
-L CONN_01X02 P4
-U 1 1 5787CFDA
-P 4400 2800
-F 0 "P4" H 4400 2950 50  0000 C CNN
-F 1 "CONN_01X02" V 4500 2800 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02" H 4400 2800 50  0001 C CNN
-F 3 "" H 4400 2800 50  0000 C CNN
-	1    4400 2800
-	0    -1   -1   0   
+L CONN_02X08 P2
+U 1 1 57881476
+P 7250 5300
+F 0 "P2" H 7250 5750 50  0000 C CNN
+F 1 "HEADER" V 7250 5300 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x08" H 7250 4100 50  0001 C CNN
+F 3 "" H 7250 4100 50  0000 C CNN
+	1    7250 5300
+	0    1    1    0   
 $EndComp
 Wire Wire Line
 	4950 2850 5600 2850
@@ -243,7 +237,7 @@ Wire Wire Line
 Wire Wire Line
 	5150 4100 5600 4100
 Wire Wire Line
-	5150 4400 5150 3400
+	5150 3400 5150 5750
 Wire Wire Line
 	5150 3400 5600 3400
 Connection ~ 5150 4100
@@ -279,22 +273,6 @@ Wire Wire Line
 Connection ~ 3450 3850
 Connection ~ 4700 3250
 Wire Wire Line
-	7500 4500 7500 4800
-Wire Wire Line
-	8400 3650 8300 3650
-Wire Wire Line
-	8300 3650 8300 3850
-Wire Wire Line
-	6800 3450 8400 3450
-Wire Wire Line
-	6800 3550 8400 3550
-Wire Wire Line
-	8250 2000 8250 2200
-Wire Wire Line
-	8250 2400 8250 2850
-Wire Wire Line
-	8250 3300 8250 2950
-Wire Wire Line
 	6800 3300 8250 3300
 Wire Wire Line
 	6800 2850 6950 2850
@@ -310,81 +288,13 @@ Connection ~ 7750 3300
 Wire Wire Line
 	7750 2400 7750 2700
 Wire Wire Line
-	6800 3700 7650 3700
-Wire Wire Line
-	6800 3800 7650 3800
-Wire Wire Line
-	6800 3900 7650 3900
-Wire Wire Line
-	6800 4000 7650 4000
-Wire Wire Line
-	6800 4100 7650 4100
-Wire Wire Line
-	6800 4200 7650 4200
-Wire Wire Line
-	6800 4300 7650 4300
-Wire Wire Line
-	6800 4400 7650 4400
-Wire Wire Line
-	7500 4500 7650 4500
-Wire Wire Line
 	4100 3850 4100 3650
 Wire Wire Line
-	4450 3250 5600 3250
-Wire Wire Line
-	4450 3250 4450 3000
-Wire Wire Line
-	4350 3000 4350 3850
-Connection ~ 4350 3850
-Text Notes 4050 2650 0    60   ~ 0
-+3.3V HEADER
-Text Label 7150 3450 0    60   ~ 0
-SDA
-Text Label 7150 3550 0    60   ~ 0
-SCL
-Text Label 4100 4200 0    60   ~ 0
-D+
-Text Label 4100 4300 0    60   ~ 0
-D-
-Text Label 4100 4400 0    60   ~ 0
-VCC
-Text Label 4500 3250 0    60   ~ 0
-VDD
-Text Label 7150 3300 0    60   ~ 0
-VPP
-Text Label 7050 3700 0    60   ~ 0
-GPIO.0
-Text Label 7050 3800 0    60   ~ 0
-GPIO.1
-Text Label 7050 3900 0    60   ~ 0
-GPIO.2
-Text Label 7050 4000 0    60   ~ 0
-GPIO.3
-Text Label 7050 4100 0    60   ~ 0
-GPIO.4
-Text Label 7050 4200 0    60   ~ 0
-GPIO.5
-Text Label 7050 4300 0    60   ~ 0
-GPIO.6
-Text Label 7050 4400 0    60   ~ 0
-GPIO.7
-Text Label 5200 2850 0    60   ~ 0
-VIO
+	3950 3250 5600 3250
 Wire Wire Line
 	3850 4400 5150 4400
 Wire Wire Line
 	3850 4300 5600 4300
-$Comp
-L SP0503BAHTG CR1
-U 1 1 5787ED15
-P 4650 4850
-F 0 "CR1" H 4400 4650 60  0000 C CNN
-F 1 "SP0503BAHTG" H 4650 5150 60  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-143_Handsoldering" H 5700 4900 60  0001 C CNN
-F 3 "" H 5700 4900 60  0001 C CNN
-	1    4650 4850
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	4500 4500 4500 4400
 Connection ~ 4500 4400
@@ -394,19 +304,83 @@ Connection ~ 4650 4300
 Wire Wire Line
 	4800 4500 4800 4200
 Connection ~ 4800 4200
-$Comp
-L GND #PWR08
-U 1 1 5787EED4
-P 4650 5400
-F 0 "#PWR08" H 4650 5150 50  0001 C CNN
-F 1 "GND" H 4650 5250 50  0000 C CNN
-F 2 "" H 4650 5400 50  0000 C CNN
-F 3 "" H 4650 5400 50  0000 C CNN
-	1    4650 5400
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4650 5200 4650 5400
-Text Label 8250 2550 1    60   ~ 0
-VPP
+Wire Wire Line
+	6800 4400 6900 4400
+Wire Wire Line
+	6900 4400 6900 5050
+Wire Wire Line
+	6800 4300 7000 4300
+Wire Wire Line
+	7000 4300 7000 5050
+Wire Wire Line
+	6800 4200 7100 4200
+Wire Wire Line
+	7100 4200 7100 5050
+Wire Wire Line
+	6800 4100 7200 4100
+Wire Wire Line
+	7200 4100 7200 5050
+Wire Wire Line
+	6800 4000 7300 4000
+Wire Wire Line
+	7300 4000 7300 5050
+Wire Wire Line
+	6800 3900 7400 3900
+Wire Wire Line
+	7400 3900 7400 5050
+Wire Wire Line
+	6800 3800 7500 3800
+Wire Wire Line
+	7500 3800 7500 5050
+Wire Wire Line
+	6800 3700 7600 3700
+Wire Wire Line
+	7600 3700 7600 5050
+Wire Wire Line
+	6800 3550 7800 3550
+Wire Wire Line
+	7800 3550 7800 5600
+Wire Wire Line
+	7800 5600 7600 5600
+Wire Wire Line
+	7600 5600 7600 5550
+Wire Wire Line
+	6800 3450 7900 3450
+Wire Wire Line
+	7900 3450 7900 5700
+Wire Wire Line
+	7900 5700 7500 5700
+Wire Wire Line
+	7500 5700 7500 5550
+Connection ~ 5150 4400
+Wire Wire Line
+	5150 5750 6900 5750
+Wire Wire Line
+	6900 5750 6900 5550
+Wire Wire Line
+	3950 5850 7200 5850
+Wire Wire Line
+	7300 5800 8250 5800
+Wire Wire Line
+	8250 5800 8250 3300
+Wire Wire Line
+	7000 5550 7000 6350
+Wire Wire Line
+	6700 6350 7400 6350
+Connection ~ 7000 6350
+Wire Wire Line
+	3950 3250 3950 5850
+Wire Wire Line
+	7200 5850 7200 5550
+Wire Wire Line
+	7100 5550 7100 6350
+Connection ~ 7100 6350
+Wire Wire Line
+	7400 6350 7400 6200
+Wire Wire Line
+	7400 6000 7400 5550
+Wire Wire Line
+	7300 5800 7300 5550
 $EndSCHEMATC
